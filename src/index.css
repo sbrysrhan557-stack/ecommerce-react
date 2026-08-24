@@ -1,0 +1,33 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+@import "tailwindcss";
+
+
+:root{
+    --main-color: #0090f0;
+    --p-color: #7b7b7b;
+    --bg-color: #f3f3f3;
+    --white-color: #fff;
+    --color-heading: #253237;
+    --border-color: #d6d6d6d5;
+}
+
+body{
+    font-family: "Inter", sans-serif;
+    background-color: var(--white-color);
+}
+.container{
+    width: 90%;
+    max-width: 1250px;
+    margin: 0 auto;
+}
+img{
+    width: 100%;
+}
+h1,h2,h3,h4,h5,h6,a{
+    color: var(--color-heading);
+    font-family: "DM Sans", sans-serif;
+}
+p{
+    color: var(--p-color);
+}
