@@ -50,7 +50,7 @@ function HeroSlider() {
         }}
         pagination={true}
         modules={[Autoplay, Pagination]}
-        className="mySwiper w-[80%] h-full mt-10"
+        className="mySwiper w-[80%] h-full my-10"
       >
         {info.map((slide) => (
           <SwiperSlide key={slide.id} className="relative">

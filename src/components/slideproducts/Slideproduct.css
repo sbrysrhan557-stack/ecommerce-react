@@ -1,0 +1,72 @@
+@import './src/index.css';
+
+.top-slide::after {
+  content: "";
+  position: absolute;
+  bottom: -1px;
+  left: 20px;
+  width: 100px;
+  height: 2px;
+  background-color: var(--main-color);
+}
+
+/* Product */
+.product{
+    position: relative;
+    width: 230px;
+    background-color: var(--white-color);
+    padding: 25px 15px;
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    overflow: hidden;
+    transition: all ease-in-out 0.3s;
+}
+.product:hover {
+    border: 1px solid var(--main-color);
+    box-shadow: 10px 10px 15px #94949429;
+}
+
+
+.product .info-product h4 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+
+.product .info-product p {
+  color: var(--main-color);
+  font-weight: bold;
+}
+
+.product .icon {
+    position: absolute;
+    top: 50%;
+    right: -50px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    transform: translateY(-50%);
+    transition: all ease-in-out 0.3s;
+}
+.product:hover .icon {
+    right: 20px;
+}
+
+.product .icon span {
+    width: 40px;
+    height: 40px;
+    background-color: var(--border-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    color: var(--main-color);
+    cursor: pointer;
+    box-shadow: 0px 0px 5px #0000001f;
+    transition: all ease-in-out 0.3s;
+}
+.product .icon span:hover {
+    transform: scale(1.1);
+}

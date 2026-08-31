@@ -1,15 +1,17 @@
 import React from 'react'
 import TopHeader from '@/components/header/TopHeader'
 import BtmHeader from '@/components/header/BtmHeader'
-import Home from './pages/Home'
+import AppRoutes from './routes/router'
 
 function App() {
   return <>
     <header>
       <TopHeader />
       <BtmHeader />
-      <Home/>
     </header>
+    <main>
+      <AppRoutes/>
+    </main>
   </>
 }
 

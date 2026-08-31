@@ -19,12 +19,12 @@ function TopHeader() {
               type="text"
               id="search"
               name="search"
-              className="w-100 rounded-l-full py-2 px-4 border-2 border-[var(--main-color)] bg-[var(--bg-color)] focus:outline-0"
+              className="w-100 rounded-l-full py-2 px-4 border-2 border-(--main-color) bg-(--bg-color) focus:outline-0"
               placeholder="Search For Products..."
             />
             <button
               type="submit"
-              className="bg-[var(--main-color)] text-white p-4 rounded-r-full cursor-pointer"
+              className="bg-(--main-color) text-white p-4 rounded-r-full cursor-pointer"
             >
               <FaSearch />
             </button>
@@ -33,17 +33,17 @@ function TopHeader() {
           <div className="header-icon flex items-center gap-4">
             <div className="icon p-2 relative">
               <Link to="/">
-                <FaRegHeart className="text-[var(--color-heading)] text-4xl" />
+                <FaRegHeart className="text-(--color-heading) text-4xl" />
               </Link>
-              <span className="count absolute top-0 right-0 bg-[var(--main-color)] text-[var(--white-color)] text-xs rounded-full h-5 w-5 flex items-center justify-center">
+              <span className="count absolute top-0 right-0 bg-(--main-color) text-(--white-color) text-xs rounded-full h-5 w-5 flex items-center justify-center">
                 0
               </span>
             </div>
             <div className="icon p-2 relative">
               <Link to="/">
-                <FiShoppingCart className="text-[var(--color-heading)] text-4xl" />
+                <FiShoppingCart className="text-(--color-heading) text-4xl" />
               </Link>
-              <span className="count absolute top-0 right-0 bg-[var(--main-color)] text-[var(--white-color)] text-xs rounded-full h-5 w-5 flex items-center justify-center">
+              <span className="count absolute top-0 right-0 bg-(--main-color) text-(--white-color) text-xs rounded-full h-5 w-5 flex items-center justify-center">
                 0
               </span>
             </div>
