@@ -1,4 +1,6 @@
+import ProductDetailsLoading from "@/components/Loading/ProductDetailsLoading";
 import SlideProduct from "@/components/slideproducts/SlideProduct";
+import SlideProductLoading from "@/components/slideproducts/SlideProductLoading";
 import { useState, useEffect } from "react";
 import { FaRegHeart, FaStar } from "react-icons/fa";
 import { FaCartShopping, FaShareNodes } from "react-icons/fa6";
@@ -14,6 +16,7 @@ function ProductDetails() {
   const [product, setProduct] = useState(null);
   const [relatedProducts, setRelatedProducts] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [loadingCategory, setLoadingCategory] = useState(true);
 
   useEffect(() => {
     const fetchProductData = async () => {
@@ -45,23 +48,23 @@ function ProductDetails() {
         console.error("Error fetching data:", error);
       } finally {
         setLoading(false);
+        setLoadingCategory(false);
       }
     };
 
     fetchProductData();
   }, [id]);
 
-  if (loading) return <p className="text-center py-10 font-bold">Loading...</p>;
-  if (!product)
-    return <p className="text-center py-10 font-bold">Product Not Found</p>;
+  if (loading) return <ProductDetailsLoading />;
+  if (!product) return <p className="text-center py-10 font-bold">Product Not Found</p>;
 
   return (
-    <div className="container py-10">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-start">
+    <div className="py-10 w-full">
+      <div className=" container grid grid-cols-1 md:grid-cols-2 gap-10 items-start">
         {/* قسم معرض الصور (الجزء الأيسر) */}
-        <div className="flex flex-col items-center gap-6">
+        <div className="flex md:flex-col flex-row items-center gap-6 order-2 md:order-1">
           {/* الصورة الرئيسية */}
-          <div className="w-full max-w-78.5 h-112.5 flex items-center justify-center p-4 rounded-xl border border-(--border-color) shadow-sm bg-(--white-color)">
+          <div className="w-full max-w-78.5 h-100 flex items-center justify-center p-4 rounded-xl border border-(--main-color) shadow-md bg-(--white-color)">
             <img
               src={selectedImage || product.thumbnail}
               alt={product.title}
@@ -70,7 +73,7 @@ function ProductDetails() {
           </div>
 
           {/* الصور المصغرة Thumbnails */}
-          <div className="flex gap-4">
+          <div className="flex flex-col md:flex-row gap-4">
             {product.images?.map((img, index) => (
               <button
                 key={index}
@@ -92,7 +95,7 @@ function ProductDetails() {
         </div>
 
         {/* قسم تفاصيل المنتج (الجزء الأيمن) */}
-        <div className="flex flex-col gap-4 text-gray-700">
+        <div className="flex flex-col gap-4 text-gray-700 order-1 md:order-2">
           <h1 className="text-3xl font-bold text-(--main-color)">
             {product.title}
           </h1>
@@ -156,16 +159,23 @@ function ProductDetails() {
       </div>
 
       {/* عرض السلايدر للمنتجات المشابهة في نفس الفئة */}
-      {relatedProducts.length > 0 && (
-        <div className="mt-16">
-          <SlideProduct
-            data={relatedProducts}
-            title={`${product.category.replace("-", " ")}`}
-            className="w-full"
-            spaceBetween={54}
-          />
-        </div>
-      )}
+      {(loadingCategory) ? (
+  <div className="mt-16">
+    {/* عنوان وهمي أو تمرير مكون التحميل مباشرة */}
+    <SlideProductLoading />
+  </div>
+) : (
+  relatedProducts.length > 0 && (
+    <div className="mt-16 mx-0">
+      <SlideProduct
+        key={product.category}
+        data={relatedProducts}
+        title={`${product.category.replace("-", " ") || "Related Products"}`}
+        className="w-full"
+      />
+    </div>
+  )
+)}
     </div>
   );
 }

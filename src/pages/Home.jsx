@@ -1,5 +1,6 @@
 import HeroSlider from "@/components/HeroSlider";
 import SlideProduct from "@/components/slideproducts/SlideProduct";
+import SlideProductLoading from "@/components/slideproducts/SlideProductLoading";
 import React from "react";
 import { useState } from "react";
 import { useEffect } from "react";
@@ -49,7 +50,7 @@ function Home() {
       <HeroSlider />
 
       {loading ? (
-        <p>Loading...</p>
+        <SlideProductLoading />
       ) : (
         categories.map((category) => (
           <SlideProduct

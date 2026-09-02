@@ -2,7 +2,6 @@ import React, { useRef, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 import Product from "@/components/slideproducts/Product";
-import "@/components/slideproducts/SlideProduct.css";
 
 // import required modules
 import { Pagination, Autoplay, Navigation } from "swiper/modules";
@@ -14,7 +13,7 @@ function SlideProduct({data = [], title }) {
   return (
     <div className="slide-products slide py-5">
       <div className="container">
-        <div className="top-slide relative mb-4 px-5 py-4 border-b border-(--border-color)">
+        <div className="top-slide relative mb-4 px-5 py-4 border-b border-(--border-color) after:absolute after:bottom-[-2px] after:content-[''] after:rounded-full after:left-[20px] after:w-[100px] after:h-[4px] after:bg-(--main-color)">
           <h2 className="text-3xl font-bold text-(--main-color) mb-3 capitalize">
             {title}
           </h2>
@@ -23,15 +22,29 @@ function SlideProduct({data = [], title }) {
 
         <Swiper
           loop={true}
-          slidesPerView={5}
-          spaceBetween={25}
+          centeredSlides={true}       // هذه الخاصية تجعل المنتج الفعّال في المنتصف
+          centeredSlidesBounds={true}
+          grabCursor={true}
+          spaceBetween={30}
           navigation={true}
           modules={[Navigation, Pagination, Autoplay]}
           autoplay={{
             delay: 1500,
             disableOnInteraction: false,
+            pauseOnMouseEnter: true,
           }}
-          className="mySwiper h-90  "
+          breakpoints={{
+            320: {
+              slidesPerView: 1,
+            },
+            768: {
+              slidesPerView: 3,
+            },
+            1280: {
+              slidesPerView: 5,
+            },
+          }}
+          className="mySwiper h-100 sm:h-90 overflow-hidden"
         >
           {data.map((item) => {
             return (
