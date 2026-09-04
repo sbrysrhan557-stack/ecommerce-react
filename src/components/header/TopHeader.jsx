@@ -3,8 +3,12 @@ import { Link } from "react-router";
 import logo from "@/imgs/logo.png";
 import { FaRegHeart, FaSearch } from "react-icons/fa";
 import { FiShoppingCart } from "react-icons/fi";
+import { CardContext } from "../context/CardContext";
 
 function TopHeader() {
+
+  const {cardItems} = React.useContext(CardContext);
+
   return (
     <>
       <div className="top-header">
@@ -40,11 +44,11 @@ function TopHeader() {
               </span>
             </div>
             <div className="icon p-2 relative">
-              <Link to="/">
+              <Link to="/cart">
                 <FiShoppingCart className="text-(--color-heading) text-4xl" />
               </Link>
               <span className="count absolute top-0 right-0 bg-(--main-color) text-(--white-color) text-xs rounded-full h-5 w-5 flex items-center justify-center">
-                0
+                {cardItems.length}
               </span>
             </div>
           </div>

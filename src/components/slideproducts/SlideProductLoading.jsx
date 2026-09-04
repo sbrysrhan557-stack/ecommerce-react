@@ -10,7 +10,7 @@ function SlideProductLoading() {
           <div className="w-72 h-4 bg-gray-300 rounded-md animate-pulse"></div>
         </div>
 
-        {/* شبكة المنتجات الوهمية (تمثيل لشكل الكروت داخل السلايدر) */}
+        {/* شبكة المنتجات الوهمية تمثيل لشكل الكروت داخل السلايدر */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 py-4">
           {[1, 2, 3, 4, 5].map((_, index) => (
             <div key={index} className="flex flex-col gap-3 p-4 border border-gray-200 rounded-xl">
