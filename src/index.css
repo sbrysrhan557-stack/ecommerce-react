@@ -4,11 +4,11 @@
 
 
 :root{
-    --main-color: #0090f0;
+    --main-color: #004878;
+    --footer-color: #140202;
     --p-color: #7b7b7b;
     --bg-color: #f3f3f3;
     --white-color: #fff;
-    --color-heading: #253237;
     --border-color: #d6d6d6d5;
 }
 
@@ -21,11 +21,7 @@ body{
     max-width: 1250px;
     margin: 0 auto;
 }
-img{
-    width: 100%;
-}
-h1,h3,h4,h5,h6{
-    color: var(--color-heading);
+h1,h2,h3,h4,h5,h6{
     font-family: "DM Sans", sans-serif;
 }
 p{

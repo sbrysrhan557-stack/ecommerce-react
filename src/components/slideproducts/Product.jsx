@@ -1,23 +1,19 @@
-import React from "react";
-import {
-  FaStar,
-  FaCartArrowDown,
-  FaRegHeart,
-  FaInfo,
-  FaCheck,
-} from "react-icons/fa6";
-import { Link } from "react-router";
-import { CardContext } from "../context/CardContext";
-import { useNavigate } from "react-router";
+import React, { useContext } from "react";
+import { FaStar, FaCartArrowDown, FaRegHeart, FaInfo } from "react-icons/fa6";
+import { CardContext } from "@/components/context/CardContext";
+import { WishlistContext } from "@/components/context/WishlistContext";
+import { useNavigate, Link } from "react-router";
 import { toast } from "react-toastify";
 
 function Product({ item }) {
   const navigate = useNavigate();
+  const { wishlistItems, toggleWishlist } = useContext(WishlistContext);
   const { cardItems, addToCard, removeFromCard } =
     React.useContext(CardContext);
   // (تأكد من اسم دالة الحذف لديك في الـ Context، لو لم تكن موجودة يمكنك عمل دالة toggle أو استخدام دالة الحذف الخاصة بك)
 
   const isInCart = cardItems.some((cartItem) => cartItem.id === item.id);
+  const isFavorite = wishlistItems.some((fav) => fav.id === item.id);
 
   // دالة للتعامل مع الضغط على زر السلة (إضافة أو إزالة)
   const handleCartClick = (e) => {
@@ -50,7 +46,7 @@ function Product({ item }) {
             </span>
             <span className="text-gray-500 text-xs">Added to Cart</span>
             <button
-              onClick={() => navigate("/cart")} // عدل المسار حسب صفحة السلة لديك
+              onClick={() => navigate("/cart")}
               className="cursor-pointer mt-2 bg-(--main-color) text-(--white-color) text-xs py-1 px-3 rounded-full hover:opacity-90 transition-all text-center"
             >
               View Cart
@@ -68,21 +64,34 @@ function Product({ item }) {
     }
   };
 
+  // دالة للتعامل مع الضغط على زر المفضلة (إضافة أو إزالة)
+  const handleWishlistClick = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    toggleWishlist(item);
+  };
+
   return (
-    <div className="group relative w-full sm:w-57.5 bg-(--white-color) p-4 border border-(--border-color) rounded-2xl overflow-hidden transition-all duration-300 hover:border-(--main-color) hover:shadow-xl hover:-translate-y-1">
+    <div
+      className={`group relative m-w-full my-5 bg-(--white-color) p-4 border rounded-2xl overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1 ${
+        isFavorite
+          ? "border-rose-500 shadow-md ring-1 ring-rose-200 hover:border-rose-500"
+          : "border-(--border-color) hover:border-(--main-color)"
+      }`}
+    >
       {/* رابط تفاصيل المنتج */}
       <Link to={`/product/${item.id}`} className="block">
         {/* قسم الصورة مع تأثير Zoom */}
         <div className="relative w-full h-58 sm:h-48 px-2 flex items-center justify-center overflow-hidden rounded-xl bg-gray-50 mb-4">
           <img
             src={item.images[0]}
-            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+            className="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-300"
             alt={item.title || "Product image"}
           />
 
-          {/* وسم New */}
-          <span className="absolute top-2 left-2 bg-(--main-color) text-(--white-color) text-[10px] font-semibold px-2 py-0.5 rounded-full shadow-sm">
-            New
+          {/* Brand */}
+          <span className="absolute top-2 left-2 bg-(--white-color) text-(--main-color) text-[10px] font-semibold px-2 py-0.5 rounded-full shadow-sm">
+            {item.brand || "New"}
           </span>
 
           {/* شارة (Badge) تظهر إذا كان المنتج موجوداً في السلة */}
@@ -111,12 +120,13 @@ function Product({ item }) {
 
           <button
             type="button"
-            onClick={(e) => {
-              e.preventDefault();
-              e.stopPropagation();
-            }}
-            className="w-10 h-10 bg-(--white-color)/90 backdrop-blur-sm text-(--main-color) flex items-center justify-center rounded-full shadow-md transition-all duration-200 hover:bg-rose-500 hover:text-(--white-color) hover:scale-110"
-            title="Add to Wishlist"
+            onClick={handleWishlistClick}
+            className={`w-10 h-10 backdrop-blur-sm flex items-center justify-center rounded-full shadow-md transition-all duration-200 hover:scale-110 ${
+              isFavorite
+                ? "bg-rose-500 text-white hover:bg-rose-600"
+                : "bg-(--white-color)/90 text-(--main-color) hover:bg-rose-500 hover:text-white"
+            }`}
+            title={isFavorite ? "Remove from Wishlist" : "Add to Wishlist"}
           >
             <FaRegHeart className="text-sm" />
           </button>
@@ -135,20 +145,19 @@ function Product({ item }) {
           <h4 className="product-name text-base font-bold text-gray-800 line-clamp-1 group-hover:text-(--main-color) transition-colors duration-200">
             {item.title}
           </h4>
+          <p className="text-gray-500 text-xs line-clamp-2 mt-1">
+            {item.description}
+          </p>
 
-          {/* التقييم */}
-          <div className="stars py-1.5 flex items-center text-sm gap-1 text-yellow-400">
-            <FaStar />
-            <span className="text-gray-600 text-xs font-semibold">
-              ({item.rating || "4.5"})
-            </span>
-          </div>
-
-          {/* السعر */}
-          <div className="flex items-center justify-between mt-1">
-            <p className="price-product text-lg font-extrabold text-(--main-color)">
+          {/* التقييم  والسعر*/}
+          <div className="mt-4 pt-4 border-t border-gray-100 flex items-center justify-between">
+            <span className="font-extrabold text-lg text-gray-800">
               $ {item.price}
-            </p>
+            </span>
+            <div className="flex items-center gap-1 text-yellow-400 text-sm font-bold">
+              <FaStar />
+              <span>{item.rating}</span>
+            </div>
           </div>
         </div>
       </Link>

@@ -11,9 +11,9 @@ import "swiper/css/navigation";
 
 function SlideProduct({data = [], title }) {
   return (
-    <div className="slide-products slide py-5">
+    <div className="slide-products slide py-3">
       <div className="container">
-        <div className="top-slide relative mb-4 px-5 py-4 border-b border-(--border-color) after:absolute after:bottom-[-2px] after:content-[''] after:rounded-full after:left-[20px] after:w-[100px] after:h-[4px] after:bg-(--main-color)">
+        <div className="top-slide relative mb-4 px-5 py-4 border-b border-(--border-color) after:absolute after:-bottom-0.5 after:content-[''] after:rounded-full after:left-5 after:w-25 after:h-1 after:bg-(--main-color)">
           <h2 className="text-3xl font-bold text-(--main-color) mb-3 capitalize">
             {title}
           </h2>
@@ -22,10 +22,9 @@ function SlideProduct({data = [], title }) {
 
         <Swiper
           loop={true}
-          centeredSlides={true}       // هذه الخاصية تجعل المنتج الفعّال في المنتصف
           centeredSlidesBounds={true}
           grabCursor={true}
-          spaceBetween={30}
+          spaceBetween={20}
           navigation={true}
           modules={[Navigation, Pagination, Autoplay]}
           autoplay={{
@@ -41,10 +40,10 @@ function SlideProduct({data = [], title }) {
               slidesPerView: 3,
             },
             1280: {
-              slidesPerView: 5,
+              slidesPerView: 4,
             },
           }}
-          className="mySwiper h-100 sm:h-90 overflow-hidden"
+          className="mySwiper h-auto overflow-hidden"
         >
           {data.map((item) => {
             return (

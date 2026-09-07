@@ -46,7 +46,7 @@ export function CardProvider({ children }) {
 
   // حذف الكل
   const clearCart = () => {
-    setCardItems([])
+    setCardItems([]);
   }
 
   return (

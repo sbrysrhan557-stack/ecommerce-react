@@ -4,9 +4,10 @@ import SlideProductLoading from "@/components/slideproducts/SlideProductLoading"
 import { useState, useEffect, useContext } from "react";
 import { FaRegHeart, FaStar } from "react-icons/fa";
 import { FaCartShopping, FaShareNodes, FaCheck } from "react-icons/fa6";
-import { useParams, useNavigate } from "react-router"; // تأكد من استيراد useNavigate
+import { useParams, useNavigate } from "react-router";
 import { CardContext } from "@/components/context/CardContext";
-import { toast } from "react-toastify"; // تأكد من استيراد مكتبة الـ toast
+import { WishlistContext } from "@/components/context/WishlistContext"; // 1. استيراد WishlistContext
+import { toast } from "react-toastify";
 
 // Swiper Style
 import "swiper/css";
@@ -14,7 +15,7 @@ import "swiper/css/navigation";
 
 function ProductDetails() {
   const { id } = useParams();
-  const navigate = useNavigate(); // تهيئة الـ navigate
+  const navigate = useNavigate();
   const [selectedImage, setSelectedImage] = useState("");
   const [product, setProduct] = useState(null);
   const [relatedProducts, setRelatedProducts] = useState([]);
@@ -22,11 +23,20 @@ function ProductDetails() {
   const [loadingCategory, setLoadingCategory] = useState(true);
 
   const { cardItems, addToCard, removeFromCard } = useContext(CardContext);
+  
+  // 2. استدعاء بيانات ومحددات المفضلة
+  const { wishlistItems, toggleWishlist } = useContext(WishlistContext);
+
   const isInCart = product
     ? cardItems.some((item) => item.id === product.id)
     : false;
 
-  // دالة التعامل مع زر السلة (إضافة أو إزالة مع التنبيه)
+  // 3. التحقق مما إذا كان المنتج الحالي موجوداً في المفضلة
+  const isFavorite = product
+    ? wishlistItems.some((item) => item.id === product.id)
+    : false;
+
+  // دالة التعامل مع زر السلة
   const handleCartClick = () => {
     if (isInCart) {
       removeFromCard(product.id);
@@ -34,7 +44,6 @@ function ProductDetails() {
     } else {
       addToCard(product);
 
-      // إظهار التنبيه المخصص
       toast.success(
         <div className="flex items-center gap-3">
           <div className="relative">
@@ -66,6 +75,11 @@ function ProductDetails() {
         },
       );
     }
+  };
+
+  // 4. دالة التعامل مع زر المفضلة
+  const handleWishlistClick = () => {
+    toggleWishlist(product);
   };
 
   useEffect(() => {
@@ -196,15 +210,23 @@ function ProductDetails() {
             </button>
 
             <div className="flex items-center gap-3">
+              {/* 5. زر المفضلة الديناميكي */}
               <button
-                title="Add to Wishlist"
-                className="w-10 h-10 rounded-full cursor-pointer bg-sky-50 hover:bg-sky-100 text-(--main-color) flex items-center justify-center transition-colors duration-200"
+                type="button"
+                onClick={handleWishlistClick}
+                title={isFavorite ? "Remove from Wishlist" : "Add to Wishlist"}
+                className={`w-10 h-10 rounded-full cursor-pointer backdrop-blur-sm flex items-center justify-center shadow-md transition-all duration-200 hover:scale-110 ${
+                  isFavorite
+                    ? "bg-rose-500 text-white hover:bg-rose-600"
+                    : "bg-(--white-color)/90 text-(--main-color) hover:bg-rose-500 hover:text-white"
+                }`}
               >
                 <FaRegHeart className="text-lg" />
               </button>
+
               <button
                 title="Share"
-                className="w-10 h-10 cursor-pointer rounded-full bg-sky-50 hover:bg-sky-100 text-(--main-color) flex items-center justify-center transition-colors duration-200"
+                className="w-10 h-10 cursor-pointer bg-(--white-color)/90 backdrop-blur-sm text-(--main-color) flex items-center justify-center rounded-full shadow-md transition-all duration-200 hover:bg-gray-800 hover:text-(--white-color)"
               >
                 <FaShareNodes className="text-lg" />
               </button>
