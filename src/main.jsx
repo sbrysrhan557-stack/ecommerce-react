@@ -8,7 +8,7 @@ import { WishlistProvider } from "@/components/context/WishlistContext";
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <BrowserRouter>
+    <BrowserRouter basename={import.meta.env.BASE_URL}>
       <CardProvider>
         <WishlistProvider>
           <App />
