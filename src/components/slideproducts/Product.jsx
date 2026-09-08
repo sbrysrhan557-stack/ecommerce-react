@@ -73,15 +73,15 @@ function Product({ item }) {
 
   return (
     <div
-      className={`group relative m-w-full my-5 bg-(--white-color) p-4 border rounded-2xl overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1 ${
+      className={`group relative max-w-full my-5 bg-(--white-color) p-4 border rounded-2xl overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1 flex flex-col justify-between ${
         isFavorite
           ? "border-rose-500 shadow-md ring-1 ring-rose-200 hover:border-rose-500"
           : "border-(--border-color) hover:border-(--main-color)"
       }`}
     >
-      {/* رابط تفاصيل المنتج */}
-      <Link to={`/product/${item.id}`} className="block">
-        {/* قسم الصورة مع تأثير Zoom */}
+      {/* رابط تفاصيل المنتج*/}
+      <div className="block flex-1">
+        {/* Photo */}
         <div className="relative w-full h-58 sm:h-48 px-2 flex items-center justify-center overflow-hidden rounded-xl bg-gray-50 mb-4">
           <img
             src={item.images[0]}
@@ -94,50 +94,12 @@ function Product({ item }) {
             {item.brand || "New"}
           </span>
 
-          {/* شارة (Badge) تظهر إذا كان المنتج موجوداً في السلة */}
+          {/* تظهر إذا كان المنتج موجوداً في السلة */}
           {isInCart && (
             <span className="absolute bottom-2 left-2 bg-green-600 text-white text-[10px] font-bold px-2 py-1 rounded-md shadow-md animate-fade-in">
               In Cart ✓
             </span>
           )}
-        </div>
-
-        {/* قسم الأيقونات السريعة */}
-        <div className="absolute top-20 -right-13 group-hover:right-10 sm:group-hover:right-3 flex flex-col gap-2 transition-all duration-300 ease-in-out z-10">
-          {/* زر السلة الديناميكي (يتغير لونه وشكله حسب حالته في السلة) */}
-          <button
-            type="button"
-            onClick={handleCartClick}
-            className={`w-10 h-10 backdrop-blur-sm flex items-center justify-center rounded-full shadow-md transition-all duration-200 hover:scale-110 ${
-              isInCart
-                ? "bg-green-600 text-white hover:bg-green-700"
-                : "bg-(--white-color)/90 text-(--main-color) hover:bg-(--main-color) hover:text-(--white-color)"
-            }`}
-            title={isInCart ? "Remove from Cart" : "Add to Cart"}
-          >
-            <FaCartArrowDown className="text-sm" />
-          </button>
-
-          <button
-            type="button"
-            onClick={handleWishlistClick}
-            className={`w-10 h-10 backdrop-blur-sm flex items-center justify-center rounded-full shadow-md transition-all duration-200 hover:scale-110 ${
-              isFavorite
-                ? "bg-rose-500 text-white hover:bg-rose-600"
-                : "bg-(--white-color)/90 text-(--main-color) hover:bg-rose-500 hover:text-white"
-            }`}
-            title={isFavorite ? "Remove from Wishlist" : "Add to Wishlist"}
-          >
-            <FaRegHeart className="text-sm" />
-          </button>
-
-          <button
-            type="button"
-            className="w-10 h-10 bg-(--white-color)/90 backdrop-blur-sm text-(--main-color) flex items-center justify-center rounded-full shadow-md transition-all duration-200 hover:bg-gray-800 hover:text-(--white-color) hover:scale-110"
-            title="Quick Info"
-          >
-            <FaInfo className="text-sm" />
-          </button>
         </div>
 
         {/* معلومات المنتج */}
@@ -149,8 +111,8 @@ function Product({ item }) {
             {item.description}
           </p>
 
-          {/* التقييم  والسعر*/}
-          <div className="mt-4 pt-4 border-t border-gray-100 flex items-center justify-between">
+          {/* التقييم والسعر */}
+          <div className="mt-4 pt-3 border-t border-gray-100 flex items-center justify-between">
             <span className="font-extrabold text-lg text-gray-800">
               $ {item.price}
             </span>
@@ -160,7 +122,54 @@ function Product({ item }) {
             </div>
           </div>
         </div>
-      </Link>
+      </div>
+
+      {/*  الأيقونات */}
+      <div className="mt-4 pt-3 border-t border-gray-100 flex items-center justify-around gap-2 z-10">
+        {/* زر السلة */}
+        <button
+          type="button"
+          onClick={(e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            handleCartClick(e);
+          }}
+          className={`flex-1 h-10 flex items-center justify-center gap-2 rounded-xl font-medium text-xs shadow-sm transition-all duration-200 hover:scale-[1.02] active:scale-95 ${
+            isInCart
+              ? "bg-green-600 text-white hover:bg-green-700"
+              : "bg-gray-100 text-gray-700 hover:bg-(--main-color) hover:text-white"
+          }`}
+          title={isInCart ? "Remove from Cart" : "Add to Cart"}
+        >
+          <FaCartArrowDown className="text-sm" />
+          <span>{isInCart ? "In Cart" : "Add"}</span>
+        </button>
+
+        {/* زر المفضلة */}
+        <button
+          type="button"
+          onClick={(e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            handleWishlistClick(e);
+          }}
+          className={`w-10 h-10 flex items-center justify-center rounded-xl shadow-sm transition-all duration-200 hover:scale-110 active:scale-95 ${
+            isFavorite
+              ? "bg-rose-500 text-white hover:bg-rose-600"
+              : "bg-gray-100 text-gray-600 hover:bg-rose-500 hover:text-white"
+          }`}
+          title={isFavorite ? "Remove from Wishlist" : "Add to Wishlist"}
+        >
+          <FaRegHeart className="text-sm" />
+        </button>
+
+        {/* زر التفاصيل السريعة */}
+        <Link to={`/product/${item.id}`} className="w-10 h-10 bg-gray-100 text-gray-600 flex items-center justify-center rounded-xl shadow-sm transition-all duration-200 hover:bg-gray-800 hover:text-white hover:scale-110 active:scale-95"
+          title="Quick Info"
+          >
+          <FaInfo className="text-sm" />
+        </Link>
+      </div>
     </div>
   );
 }

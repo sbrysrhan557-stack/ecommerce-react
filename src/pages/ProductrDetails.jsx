@@ -12,6 +12,7 @@ import { toast } from "react-toastify";
 // Swiper Style
 import "swiper/css";
 import "swiper/css/navigation";
+import { CiCircleRemove } from "react-icons/ci";
 
 function ProductDetails() {
   const { id } = useParams();
@@ -194,13 +195,13 @@ function ProductDetails() {
               onClick={handleCartClick}
               className={`flex items-center justify-center gap-2 cursor-pointer font-medium py-3 px-6 rounded-lg transition-all duration-200 w-fit ${
                 isInCart
-                  ? "bg-green-600 hover:bg-green-700 text-white shadow-md"
+                  ? "bg-red-600 hover:bg-red-700 text-white shadow-md"
                   : "bg-(--main-color) hover:bg-[color-mix(in_srgb,var(--main-color),black_15%)] text-(--white-color)"
               }`}
             >
               {isInCart ? (
                 <>
-                  Remove From Cart <FaCheck />
+                  Remove From Cart <CiCircleRemove size={22} />
                 </>
               ) : (
                 <>
@@ -215,7 +216,7 @@ function ProductDetails() {
                 type="button"
                 onClick={handleWishlistClick}
                 title={isFavorite ? "Remove from Wishlist" : "Add to Wishlist"}
-                className={`w-10 h-10 rounded-full cursor-pointer backdrop-blur-sm flex items-center justify-center shadow-md transition-all duration-200 hover:scale-110 ${
+                className={`w-10 h-10 rounded-xl cursor-pointer backdrop-blur-sm flex items-center justify-center shadow-md transition-all duration-200 hover:scale-110 ${
                   isFavorite
                     ? "bg-rose-500 text-white hover:bg-rose-600"
                     : "bg-(--white-color)/90 text-(--main-color) hover:bg-rose-500 hover:text-white"
@@ -226,7 +227,7 @@ function ProductDetails() {
 
               <button
                 title="Share"
-                className="w-10 h-10 cursor-pointer bg-(--white-color)/90 backdrop-blur-sm text-(--main-color) flex items-center justify-center rounded-full shadow-md transition-all duration-200 hover:bg-gray-800 hover:text-(--white-color)"
+                className="w-10 h-10 cursor-pointer bg-(--white-color)/90 backdrop-blur-sm text-(--main-color) flex items-center justify-center rounded-xl shadow-md transition-all duration-200 hover:bg-gray-800 hover:text-(--white-color)"
               >
                 <FaShareNodes className="text-lg" />
               </button>
