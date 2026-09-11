@@ -8,14 +8,14 @@ function NotFound() {
   return (
     <div className="min-h-[75vh] flex items-center justify-center px-4 py-16">
       <div className="max-w-md w-full text-center flex flex-col items-center gap-6">
-        {/* أيقونة أو رقم خطأ بتصميم بارز */}
+        {/* 404 */}
         <div className="relative flex items-center justify-center">
           <div className="text-9xl font-extrabold text-gray-100 select-none">
             404
           </div>
         </div>
 
-        {/* العنوان والوصف */}
+        {/* الكلام*/}
         <div className="flex flex-col gap-2">
           <h1 className="text-3xl font-bold text-gray-800">
             Oops! Page Not Found

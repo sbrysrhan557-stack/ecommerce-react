@@ -105,7 +105,7 @@ function Footer() {
 
         {/* حقوق النشر في الأسفل */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-(--p-color)">
-          <p>© 2026 YourStore. All rights reserved.</p>
+          <p>© 2026 S & M. All rights reserved.</p>
           <div className="flex items-center gap-6">
             <Link to="/" className="hover:text-(--main-color) transition-colors">Privacy Policy</Link>
             <Link to="/" className="hover:text-(--main-color) transition-colors">Terms of Service</Link>

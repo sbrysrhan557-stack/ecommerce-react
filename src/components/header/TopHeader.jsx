@@ -38,8 +38,8 @@ function TopHeader() {
               type="text"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)} 
-              className="w-full py-2.5 px-3 bg-transparent text-sm focus:outline-none text-gray-800"
-              placeholder="Search for products, categories..."
+              className="w-full py-2.5 px-3 bg-transparent text-sm focus:outline-none text-(--main-color)"
+              placeholder="Search for products..."
             />
             <button
               type="submit"

@@ -7,8 +7,11 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Footer from '@/components/Footer';
 import ScrollToTop from '@/components/components/ScrollToTop';
+import { useLocation } from 'react-router';
 
 function App() {
+  const location = useLocation();
+  const hideFooterAndHeader = location.pathname === "/login" || location.pathname === "/register";
   return <>
 
     {/* to Scroll to Top */}
@@ -19,14 +22,14 @@ function App() {
     </div>
     
     <header className='sticky top-0 z-50'>
-      <TopHeader />
-      <BtmHeader />
+      {!hideFooterAndHeader && <TopHeader />}
+      {!hideFooterAndHeader && <BtmHeader />}
     </header>
     <main>
       <AppRoutes/>
     </main>
     <footer>
-      <Footer />
+      {!hideFooterAndHeader && <Footer />}
     </footer>
   </>
 }

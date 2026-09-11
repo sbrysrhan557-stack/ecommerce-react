@@ -50,7 +50,7 @@ function SearchResults() {
             to="/accessories"
             className="mt-4 bg-(--main-color) text-white px-8 py-3 rounded-full font-semibold hover:opacity-90 transition-all shadow-md"
           >
-            Go Back to Accessories{" "}
+            Go Back to Accessories
             <FaShoppingBag className="inline-block ml-2" />
           </Link>
         </div>

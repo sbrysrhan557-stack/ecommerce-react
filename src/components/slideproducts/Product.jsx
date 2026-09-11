@@ -8,14 +8,12 @@ import { toast } from "react-toastify";
 function Product({ item }) {
   const navigate = useNavigate();
   const { wishlistItems, toggleWishlist } = useContext(WishlistContext);
-  const { cardItems, addToCard, removeFromCard } =
-    React.useContext(CardContext);
+  const { cardItems, addToCard, removeFromCard } = useContext(CardContext);
   // (تأكد من اسم دالة الحذف لديك في الـ Context، لو لم تكن موجودة يمكنك عمل دالة toggle أو استخدام دالة الحذف الخاصة بك)
 
   const isInCart = cardItems.some((cartItem) => cartItem.id === item.id);
   const isFavorite = wishlistItems.some((fav) => fav.id === item.id);
 
-  // دالة للتعامل مع الضغط على زر السلة (إضافة أو إزالة)
   const handleCartClick = (e) => {
     e.preventDefault();
     e.stopPropagation();
@@ -64,7 +62,7 @@ function Product({ item }) {
     }
   };
 
-  // دالة للتعامل مع الضغط على زر المفضلة (إضافة أو إزالة)
+  // إضافة أو إزالة من المفضلة
   const handleWishlistClick = (e) => {
     e.preventDefault();
     e.stopPropagation();
@@ -89,12 +87,12 @@ function Product({ item }) {
             alt={item.title || "Product image"}
           />
 
-          {/* Brand */}
+          {/* Brand or New */}
           <span className="absolute top-2 left-2 bg-(--white-color) text-(--main-color) text-[10px] font-semibold px-2 py-0.5 rounded-full shadow-sm">
             {item.brand || "New"}
           </span>
 
-          {/* تظهر إذا كان المنتج موجوداً في السلة */}
+          {/* تظهر لو المنتج موجود في السلة */}
           {isInCart && (
             <span className="absolute bottom-2 left-2 bg-green-600 text-white text-[10px] font-bold px-2 py-1 rounded-md shadow-md animate-fade-in">
               In Cart ✓
@@ -102,7 +100,7 @@ function Product({ item }) {
           )}
         </div>
 
-        {/* معلومات المنتج */}
+        {/* info product*/}
         <div className="info-product mt-2">
           <h4 className="product-name text-base font-bold text-gray-800 line-clamp-1 group-hover:text-(--main-color) transition-colors duration-200">
             {item.title}
@@ -163,7 +161,7 @@ function Product({ item }) {
           <FaRegHeart className="text-sm" />
         </button>
 
-        {/* زر التفاصيل السريعة */}
+        {/* زر التفاصيل */}
         <Link to={`/product/${item.id}`} className="w-10 h-10 bg-gray-100 text-gray-600 flex items-center justify-center rounded-xl shadow-sm transition-all duration-200 hover:bg-gray-800 hover:text-white hover:scale-110 active:scale-95"
           title="Quick Info"
           >

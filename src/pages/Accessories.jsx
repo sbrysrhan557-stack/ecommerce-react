@@ -66,7 +66,7 @@ function Accessories() {
           </p>
         </div>
 
-        {/* شريط الفلترة الجانبي أو العلوي للتصنيفات */}
+        {/*All Products*/}
         <div className="flex items-center gap-2 overflow-x-auto pb-4 mb-8 scrollbar-none">
           <button
             onClick={() => {
