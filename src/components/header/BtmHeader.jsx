@@ -26,7 +26,7 @@ function BtmHeader() {
       .then((data) => setCategories(data));
   }, []);
 
-  // إغلاق قائمة التصنيفات عند النقر خارجها
+  // إغلاق قائمة التصنيفات عند النقر خارجها ai
   useEffect(() => {
     function handleClickOutside(event) {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
@@ -59,7 +59,7 @@ function BtmHeader() {
               />
             </div>
 
-            {/* قائمة التصنيفات المنسدلة بتصميم نظيف وسلس */}
+            {/* قائمة التصنيفات*/}
             {showCategories && (
               <div className="absolute top-full left-0 mt-2 w-72 max-h-80 flex flex-col overflow-y-auto bg-white text-gray-800 shadow-2xl rounded-2xl border border-gray-100 z-50 p-1">
                 {categories.map((category) => (

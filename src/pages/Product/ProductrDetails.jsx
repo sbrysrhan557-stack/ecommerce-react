@@ -6,7 +6,7 @@ import { FaRegHeart, FaStar } from "react-icons/fa";
 import { FaCartShopping, FaShareNodes, FaCheck } from "react-icons/fa6";
 import { useParams, useNavigate } from "react-router";
 import { CardContext } from "@/components/context/CardContext";
-import { WishlistContext } from "@/components/context/WishlistContext"; // 1. استيراد WishlistContext
+import { WishlistContext } from "@/components/context/WishlistContext";
 import { toast } from "react-toastify";
 
 // Swiper Style

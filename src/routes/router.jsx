@@ -16,6 +16,7 @@ import Register from "@/pages/Auth/Register";
 function AppRoutes() {
   return (
     <Routes>
+      {/* Auth */}
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
 
@@ -25,17 +26,17 @@ function AppRoutes() {
       <Route path="/index" element={<Home />} />
 
       {/* صفحة حول الموقع */}
-      <Route path='/admin' element={<AdminDashboard />} />
+      <Route path="/admin" element={<AdminDashboard />} />
 
       {/* صفحة حول الموقع */}
-      <Route path='/about' element={<About />} />
+      <Route path="/about" element={<About />} />
 
       <Route path="/accessories" element={<Accessories />} />
 
       {/* صفحة اتصل بنا */}
       <Route path="/contact" element={<Contact />} />
 
-      {/* صفحة تفاصيل المنتج - تم تعديل المسار ليتطابق مع Link في كارت المنتج */}
+      {/* صفحة تفاصيل المنتج */}
       <Route path="/product/:id" element={<ProductDetails />} />
 
       {/* صفحة سلة المشتريات */}
@@ -51,10 +52,7 @@ function AppRoutes() {
       <Route path="/category/:slug" element={<CategoryProducts />} />
 
       {/* صفحة 404 عند عدم إيجاد المسار */}
-      <Route
-        path="*"
-        element={<NotFound />}
-      />
+      <Route path="*" element={<NotFound />} />
     </Routes>
   );
 }

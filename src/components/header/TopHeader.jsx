@@ -54,7 +54,7 @@ function TopHeader() {
         <div className="flex items-center gap-3">
           <Link 
             to="/favorites" 
-            className="relative p-2.5 rounded-2xl bg-gray-50 hover:bg-gray-100 text-gray-700 transition-all border border-gray-100"
+            className="relative p-2.5 rounded-2xl bg-gray-50 hover:bg-gray-100 text-(--main-color) transition-all border border-gray-100"
             title="Wishlist"
           >
             <FaRegHeart className="text-xl" />
@@ -67,7 +67,7 @@ function TopHeader() {
 
           <Link 
             to="/cart" 
-            className="relative p-2.5 rounded-2xl bg-gray-50 hover:bg-gray-100 text-gray-700 transition-all border border-gray-100"
+            className="relative p-2.5 rounded-2xl bg-gray-50 hover:bg-gray-100 text-(--main-color) transition-all border border-gray-100"
             title="Cart"
           >
             <FiShoppingCart className="text-xl" />
@@ -81,22 +81,25 @@ function TopHeader() {
 
       </div>
 
-      {/* شريط البحث الخاص بالموبايل */}
+      {/* شريط البحث الموبايل */}
       <div className="block md:hidden px-4 pb-3">
         <form onSubmit={handleSearchSubmit} className="flex w-full items-center bg-gray-50 border border-gray-200 rounded-xl overflow-hidden">
-          <input
-            type="text"
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)} 
-            className="w-full py-2 px-4 bg-transparent text-xs focus:outline-none"
-            placeholder="Search products..."
-          />
-          <button
-            type="submit"
-            className="bg-(--main-color) text-white px-4 py-2 cursor-pointer text-xs font-semibold"
-          >
-            Search
-          </button>
+            <span className="pl-4 text-gray-400">
+              <FaSearch size={14} />
+            </span>
+            <input
+              type="text"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)} 
+              className="w-full py-2.5 px-3 bg-transparent text-sm focus:outline-none text-(--main-color)"
+              placeholder="Search for products..."
+            />
+            <button
+              type="submit"
+              className="bg-(--main-color) text-white px-6 py-2.5 m-1 rounded-xl text-sm font-semibold cursor-pointer hover:opacity-90 transition-opacity shadow-sm"
+            >
+              Search
+            </button>
         </form>
       </div>
     </div>

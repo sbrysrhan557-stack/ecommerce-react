@@ -38,6 +38,8 @@ function Register() {
 
     // Home page after registration
     navigate("/");
+
+    console.log("Registered with name:", name, "email:", email, "and password:", password);
   };
 
   return (

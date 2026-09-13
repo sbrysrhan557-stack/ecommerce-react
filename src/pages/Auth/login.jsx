@@ -19,6 +19,8 @@ function Login() {
       localStorage.setItem("userRole", "customer");
       navigate("/"); 
     }
+
+    console.log("Login with email:", email, "and password:", password);
   };
 
   // دالة تسجيل الدخول بـ جوجل

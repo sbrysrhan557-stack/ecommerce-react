@@ -1,15 +1,18 @@
 import React from 'react'
+import { useState } from 'react'
+import { useEffect } from 'react'
+import { createContext } from 'react'
 
-export const CardContext = React.createContext()
+export const CardContext = createContext()
 
 export function CardProvider({ children }) {
 
-  const [cardItems, setCardItems] = React.useState(() => {
+  const [cardItems, setCardItems] = useState(() => {
     const savedCard = localStorage.getItem('cardItems')
     return savedCard ? JSON.parse(savedCard) : []
   })
 
-  React.useEffect(() => {
+  useEffect(() => {
     localStorage.setItem('cardItems', JSON.stringify(cardItems))
   }, [cardItems])
 

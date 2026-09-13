@@ -5,13 +5,13 @@ function ProductDetailsLoading() {
     <div className="container py-10">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-start">
             {/* قسم معرض الصور (الجزء الأيسر) */}
-            <div className="flex flex-col items-center gap-6">
+            <div className="flex flex-col items-center gap-6 order-2 md:order-1">
               {/* الصورة الرئيسية */}
               <div className="w-full max-w-78.5 h-100 flex items-center justify-center p-4 rounded-xl shadow-md bg-gray-300 animate-pulse">
 
               </div>
     
-              {/* الصور المصغرة Thumbnails */}
+              {/* الصور المصغرة */}
               <div className="flex gap-4">
                   <div className={`w-20 h-24 p-2 rounded-lg transition-all duration-200 bg-gray-300 animate-pulse`}>
                   </div>
@@ -22,8 +22,8 @@ function ProductDetailsLoading() {
               </div>
             </div>
     
-            {/* قسم تفاصيل المنتج (الجزء الأيمن) */}
-            <div className="flex flex-col gap-4 text-gray-700">
+            {/* قسم تفاصيل المنتج */}
+            <div className="flex flex-col gap-4 text-gray-700 order-1 md:order-2">
               <h1 className="w-full h-8 bg-gray-300 rounded-md animate-pulse">
               </h1>
     
@@ -43,10 +43,10 @@ function ProductDetailsLoading() {
               {/* الوصف */}
               <p className="w-full h-20 bg-gray-300 rounded-md animate-pulse"></p>
     
-              {/* التنبيه بوجود كمية محدودة */}
+              {/* كمية محدودة */}
               <p className="w-full h-5 bg-gray-300 rounded-md animate-pulse"></p>
 
-              {/* أزرار الإجراءات (الإضافة للسلة، المفضلة، المشاركة) */}
+              {/* أزرار*/}
               <div className="flex flex-col gap-4 mt-4">
                 <button className="w-50 h-10 bg-gray-300 rounded-md animate-pulse"></button>
     
