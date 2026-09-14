@@ -6,7 +6,7 @@ import AppRoutes from './routes/router'
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Footer from '@/components/Footer';
-import ScrollToTop from '@/components/components/ScrollToTop';
+import ScrollToTop from '@/Hook/ScrollToTop';
 import { useLocation } from 'react-router';
 
 function App() {

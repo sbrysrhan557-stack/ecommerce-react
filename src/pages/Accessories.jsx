@@ -48,7 +48,7 @@ function Accessories() {
   };
 
   return (
-    <div className="bg-white text-gray-800 py-10 lg:py-16">
+    <div className="bg-white text-gray-800 py-10 lg:py-16 animate-fade-in-up">
       <div className="container mx-auto px-4">
         {/* رأس الصفحة */}
         <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 mb-10 pb-6 border-b border-gray-100">
@@ -106,7 +106,7 @@ function Accessories() {
             No products found in this category.
           </div>
         ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 animate-fade-in-up">
             {products.map((product) => (
               <Product key={product.id} item={product} />
             ))}

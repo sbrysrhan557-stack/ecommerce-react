@@ -20,7 +20,7 @@ function TopHeader() {
   };
 
   return (
-    <div className="bg-white border-b border-gray-100 shadow-[0_4px_20px_rgba(0,0,0,0.03)] sticky top-0 z-50">
+    <div className="bg-white border-b border-gray-100 shadow-xs sticky top-0 z-50 animate-fade-in-up">
       <div className="container mx-auto px-4 py-3 flex items-center justify-between gap-4">
         
         {/* Logo */}

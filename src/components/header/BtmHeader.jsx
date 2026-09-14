@@ -38,7 +38,7 @@ function BtmHeader() {
   }, []);
 
   return (
-    <div className="bg-(--white-color) border-b border-gray-100 shadow-sm relative z-40">
+    <div className="bg-(--white-color) border-b border-gray-100 shadow-sm relative z-40 animate-fade-in-up">
       <div className="container mx-auto px-4 flex items-center justify-between">
         
         {/* قسم زر التصنيفات والقائمة الرئيسية */}

@@ -50,7 +50,7 @@ function Cart() {
 
   if (cardItems.length === 0) {
     return (
-      <div className="container mx-auto px-4 py-20 text-center flex flex-col items-center justify-center gap-4">
+      <div className="container mx-auto px-4 py-20 text-center flex flex-col items-center justify-center gap-4 animate-fade-in-up">
         <div className="w-20 h-20 bg-gray-100 rounded-full flex items-center justify-center text-gray-400 text-3xl">
           <FaShoppingBag />
         </div>
@@ -71,7 +71,7 @@ function Cart() {
   }
 
   return (
-    <div className="container mx-auto px-4 py-10 relative">
+    <div className="container mx-auto px-4 py-10 relative animate-fade-in-up">
       {/* رأس الصفحة */}
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-8 border-b pb-4">
         <h1 className="text-2xl sm:text-3xl font-bold text-gray-800">

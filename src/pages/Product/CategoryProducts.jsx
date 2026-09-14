@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams, Link } from "react-router";
-import { FaStar } from "react-icons/fa";
+import { useParams } from "react-router";
 import Product from "@/components/slideproducts/Product";
 
 function CategoryProducts() {
@@ -36,7 +35,7 @@ function CategoryProducts() {
   }
 
   return (
-    <div className="container mx-auto px-4 py-10">
+    <div className="container mx-auto px-4 py-10 animate-fade-in-up">
       {/* عنوان التصنيف */}
       <div className="mb-8 border-b pb-4 capitalize">
         <h1 className="text-3xl font-bold text-gray-800">
@@ -52,7 +51,7 @@ function CategoryProducts() {
           No products found in this category.
         </div>
       ) : (
-        /* شبكة المنتجات (Grid) متجاوبة مع الموبايل والدكتوب */
+        // عرض المنتجات في شبكة
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
           {products.map((product) => (
             <Product key={product.id} item={product} />

@@ -32,7 +32,7 @@ function Login() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center py-12 px-4">
+    <div className="min-h-screen flex items-center justify-center py-12 px-4 animate-fade-in-up">
       <div className="bg-white p-8 rounded-3xl border border-gray-100 shadow-xl max-w-md w-full">
         <h2 className="text-2xl font-black text-(--main-color) mb-6 text-center">Login to Your Account</h2>
         

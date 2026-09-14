@@ -9,7 +9,7 @@ function Favorites() {
 
   if (wishlistItems.length === 0) {
     return (
-      <div className="container mx-auto px-4 py-20 text-center flex flex-col items-center justify-center gap-4">
+      <div className="container mx-auto px-4 py-20 text-center flex flex-col items-center justify-center gap-4 animate-fade-in-up">
         <div className="w-20 h-20 bg-rose-50 rounded-full flex items-center justify-center text-rose-400 text-3xl">
           <FaRegHeart />
         </div>
@@ -30,7 +30,7 @@ function Favorites() {
   }
 
   return (
-    <div className="container mx-auto px-4 py-10">
+    <div className="container mx-auto px-4 py-10 animate-fade-in-up">
       <div className="flex items-center gap-5 flex-col sm:flex-row justify-between mb-8 border-b pb-4">
         <h1 className="text-3xl font-bold text-gray-800 ">
           Favorite Products ({wishlistItems.length})
@@ -43,7 +43,7 @@ function Favorites() {
           Go to Cart <FaCartArrowDown className="inline-block ml-2" />
         </Link>
       </div>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 animate-fade-in-up">
         {wishlistItems.map((item) => (
           <Product key={item.id} item={item} />
         ))}

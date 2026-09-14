@@ -43,7 +43,7 @@ function Register() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center py-12 px-4">
+    <div className="min-h-screen flex items-center justify-center py-12 px-4 animate-fade-in-up">
       <div className="bg-white p-8 rounded-3xl border border-gray-100 shadow-xl max-w-md w-full">
         
         <div className="text-center mb-8">

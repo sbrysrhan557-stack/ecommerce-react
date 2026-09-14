@@ -121,7 +121,7 @@ function ProductDetails() {
     return <p className="text-center py-10 font-bold">Product Not Found</p>;
 
   return (
-    <div className="py-10 w-full">
+    <div className="py-10 w-full animate-fade-in-up">
       <div className=" container grid grid-cols-1 md:grid-cols-2 gap-10 items-start">
         {/* قسم معرض الصور */}
         <div className="flex md:flex-col flex-row items-center gap-6 order-2 md:order-1">
@@ -216,7 +216,7 @@ function ProductDetails() {
                 type="button"
                 onClick={handleWishlistClick}
                 title={isFavorite ? "Remove from Wishlist" : "Add to Wishlist"}
-                className={`w-10 h-10 rounded-xl cursor-pointer backdrop-blur-sm flex items-center justify-center shadow-md transition-all duration-200 hover:scale-110 ${
+                className={`w-10 h-10 rounded-xl cursor-pointer backdrop-blur-sm flex items-center justify-center shadow-md transition-all duration-200 ${
                   isFavorite
                     ? "bg-rose-500 text-white hover:bg-rose-600"
                     : "bg-(--white-color)/90 text-(--main-color) hover:bg-rose-500 hover:text-white"

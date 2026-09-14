@@ -17,7 +17,6 @@ const categories = [
 
 function Home() {
   const [products, setProducts] = useState({});
-
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -45,7 +44,7 @@ function Home() {
 
   return (
     <div>
-      <div className="relative bg-linear-to-br py-12 overflow-hidden border-b border-gray-100">
+      <div className="relative bg-linear-to-br py-12 overflow-hidden border-b border-gray-100 animate-fade-in-up">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           
@@ -147,7 +146,6 @@ function Home() {
 
       </div>
     </div>
-
 
 
     {/* اسليدات المنتجات */}

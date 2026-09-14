@@ -6,7 +6,7 @@ function NotFound() {
   const navigate = useNavigate();
 
   return (
-    <div className="min-h-[75vh] flex items-center justify-center px-4 py-16">
+    <div className="min-h-[75vh] flex items-center justify-center px-4 py-16 animate-fade-in-up">
       <div className="max-w-md w-full text-center flex flex-col items-center gap-6">
         {/* 404 */}
         <div className="relative flex items-center justify-center">

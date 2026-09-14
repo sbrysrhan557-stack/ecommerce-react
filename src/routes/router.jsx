@@ -5,7 +5,7 @@ import Cart from "@/pages/Product/Cart";
 import SearchResults from "@/pages/Product/SearchResults";
 import Favorites from "@/pages/Product/Favorites";
 import CategoryProducts from "@/pages/Product/CategoryProducts";
-import NotFound from "@/components/components/NotFound";
+import NotFound from "@/Hook/NotFound";
 import About from "@/pages/About";
 import Contact from "@/pages/Contact";
 import Accessories from "@/pages/Accessories";

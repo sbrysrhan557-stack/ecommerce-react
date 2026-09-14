@@ -27,7 +27,7 @@ function SearchResults() {
   }, [query]);
 
   return (
-    <div className="container mx-auto py-10 px-4">
+    <div className="container mx-auto py-10 px-4 animate-fade-in-up">
       <h2 className="text-2xl font-bold mb-6 text-gray-800">
         Results for <span className="text-(--main-color)">"{query}"</span>
       </h2>

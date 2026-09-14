@@ -45,7 +45,7 @@ function AdminDashboard() {
   };
 
   return (
-    <div className="bg-gray-50 min-h-screen text-gray-800 py-8 lg:py-12">
+    <div className="bg-gray-50 min-h-screen text-gray-800 py-8 lg:py-12 animate-fade-in-up">
       <div className="container mx-auto px-4 max-w-6xl">
         
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-10 bg-white p-6 rounded-3xl border border-gray-100 shadow-sm">

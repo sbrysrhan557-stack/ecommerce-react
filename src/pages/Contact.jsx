@@ -35,7 +35,7 @@ function Contact() {
   };
 
   return (
-    <div className="bg-white text-gray-800 py-12 lg:py-20">
+    <div className="bg-white text-gray-800 py-12 lg:py-20 animate-fade-in-up">
       <div className="container mx-auto px-4">
         
         {/* Header */}

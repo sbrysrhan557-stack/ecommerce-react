@@ -10,7 +10,7 @@ import {
 
 function About() {
   return (
-    <div className="bg-white text-gray-800 py-12 lg:py-20">
+    <div className="bg-white text-gray-800 py-12 lg:py-20 animate-fade-in-up">
       <div className="container mx-auto px-4">
         {/* Hero Section */}
         <div className="max-w-3xl mx-auto text-center flex flex-col gap-6 mb-16">

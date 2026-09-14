@@ -9,7 +9,6 @@ function Product({ item }) {
   const navigate = useNavigate();
   const { wishlistItems, toggleWishlist } = useContext(WishlistContext);
   const { cardItems, addToCard, removeFromCard } = useContext(CardContext);
-  // (تأكد من اسم دالة الحذف لديك في الـ Context، لو لم تكن موجودة يمكنك عمل دالة toggle أو استخدام دالة الحذف الخاصة بك)
 
   const isInCart = cardItems.some((cartItem) => cartItem.id === item.id);
   const isFavorite = wishlistItems.some((fav) => fav.id === item.id);
@@ -19,13 +18,13 @@ function Product({ item }) {
     e.stopPropagation();
 
     if (isInCart) {
-      // لو موجود في السلة، قم بحذفه (استبدل removeFromCard بالدالة الموجودة عندك)
+      // لو موجود في السلة  احذفه 
       if (typeof removeFromCard === "function") {
         removeFromCard(item.id);
         toast.info("Removed from Cart", { autoClose: 2000 });
       }
     } else {
-      // لو مش موجود، أضفه للسلة
+      // لو مش موجودأضفه للسلة
       addToCard(item);
 
       // إظهار التنبيه المخصص
